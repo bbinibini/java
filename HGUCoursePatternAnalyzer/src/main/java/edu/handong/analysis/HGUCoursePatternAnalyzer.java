@@ -1,11 +1,12 @@
 package edu.handong.analysis;
 
 import edu.handong.analysis.datamodel.Course;
+import java.util.Arrays;
 import edu.handong.analysis.datamodel.Student;
 
 public class HGUCoursePatternAnalyzer {
 	
-	String[] lines = {	"1999-1, JC Nam, Java Programming",
+	private String[] lines = {	"1999-1, JC Nam, Java Programming",
 						"1999-2, JC Nam, Programming Language Theory",
 						"1999-1, JC Nam, Data Structures",
 						"2001-1, JC Nam, Database Systems",
@@ -19,10 +20,10 @@ public class HGUCoursePatternAnalyzer {
 						"2019-1, SJ Kim, Algorithm Analysis",
 						};
 
-	int numOfStudents;
-	int numOfCourses;
-	Student[] students;
-	Course[] courses;
+	private int numOfStudents;
+	private int numOfCourses;
+	private Student[] students;
+	private Course[] courses;
 	
 	/**
 	 * This method runs our analysis logic to get the list of student and course names from lines.
@@ -32,8 +33,6 @@ public class HGUCoursePatternAnalyzer {
 		
 		numOfStudents = Integer.parseInt(args[0]);
 		numOfCourses = Integer.parseInt(args[1]);
-		
-		System.out.println(numOfStudents, numOfCourses);
 	
 		students = initiateStudentArrayFromLines(lines);
 		
@@ -42,12 +41,12 @@ public class HGUCoursePatternAnalyzer {
 			System.out.println(student.getName());
 		}
 		
-		courses = initiateCourseArrayFromLines(lines);
-		System.out.println("Number of All Courses: " + numOfCourses);
-		for(Course course: courses) {
-			System.out.println(course.getCourseName());
-		}
-		
+//		courses = initiateCourseArrayFromLines(lines);
+//		System.out.println("Number of All Courses: " + numOfCourses);
+//		for(Course course: courses) {
+//			System.out.println(course.getCourseName());
+//		}
+//		
 	}
 
 	/**
@@ -56,10 +55,22 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private Student[] initiateStudentArrayFromLines(String[] lines) {
-		
-		// TODO: implement this method
-		
-		
+		Student[] student = new Student[numOfStudents];
+		String c = "";
+		int i = 0;
+		for (String line : lines) {
+			String[] s = line.split(",");
+			if (s[1].trim().equals(c)) continue;
+			student[i] = new Student(s[1].trim());
+			c =s[1].trim();
+			i++;
+		}
+
+		return student;
+	}
+
+	private Student Student(String trim) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
