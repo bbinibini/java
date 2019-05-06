@@ -61,7 +61,6 @@ public class HGUCoursePatternAnalyzer {
 		for (int j=0; j<lines.length; j++) {
 			String[] s = lines[j].split(",");
 			Student newstudent = new Student(s[1].trim());
-			System.out.println(newstudent.getName());
 			if(studentExist(student,newstudent)) continue;
 			student[i] = newstudent;
 			if(++i>=numOfStudents) break;
@@ -81,7 +80,6 @@ public class HGUCoursePatternAnalyzer {
 			if(student0 == null) break;
 			if(student0.getName().equals(student.getName())) return true;
 		}
-
 		return false;
 	}
 	
@@ -97,10 +95,9 @@ public class HGUCoursePatternAnalyzer {
 		
 		for (int j=0; j<lines.length; j++) {
 			String[] s = lines[j].split(",");
-			String value = s[2].trim();
-			if(Arrays.asList(l).contains(value)) continue; 
-			l[j] = value;
-			course[i] = new Course(value);
+			Course newcourse = new Course(s[2].trim());
+			if(courseExist(course,newcourse)) continue;
+			course[i] = newcourse;
 			if(++i>=numOfCourses) break;
 		}
 
@@ -115,8 +112,10 @@ public class HGUCoursePatternAnalyzer {
 	 */
 	private boolean courseExist(Course[] courses, Course course) {
 		
-		// TODO: implement this method
-
+		for(Course  course0 : courses) {
+			if(course0 == null) break;
+			if(course0.getCourseName().equals(course.getCourseName())) return true;
+		}
 		return false;
 	}
 
