@@ -56,14 +56,16 @@ public class HGUCoursePatternAnalyzer {
 	 */
 	private Student[] initiateStudentArrayFromLines(String[] lines) {
 		Student[] student = new Student[numOfStudents];
-		String c = "";
+		String[] l = new String[lines.length];
 		int i = 0;
-		for (String line : lines) {
-			String[] s = line.split(",");
-			if (s[1].trim().equals(c)) continue;
-			student[i] = new Student(s[1].trim());
-			c =s[1].trim();
-			i++;
+		
+		for (int j=0; j<lines.length; j++) {
+			String[] s = lines[j].split(",");
+			String value = s[2].trim();
+			if(Arrays.asList(l).contains(value)) continue; 
+			l[j] = value;
+			student[i] = new Student(value);
+			if(++i>=numOfStudents) break;
 		}
 
 		return student;
@@ -88,10 +90,20 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private Course[] initiateCourseArrayFromLines(String[] lines) {
+		Course[] course = new Course[numOfCourses];
+		String[] l = new String[lines.length];
+		int i = 0;
 		
-		// TODO: implement this method
-		
-		return null;
+		for (int j=0; j<lines.length; j++) {
+			String[] s = lines[j].split(",");
+			String value = s[2].trim();
+			if(Arrays.asList(l).contains(value)) continue; 
+			l[j] = value;
+			course[i] = new Course(value);
+			if(++i>=numOfCourses) break;
+		}
+
+		return course;
 	}
 
 	/**
