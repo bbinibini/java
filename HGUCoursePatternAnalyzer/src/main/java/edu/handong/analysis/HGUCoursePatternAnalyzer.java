@@ -41,12 +41,12 @@ public class HGUCoursePatternAnalyzer {
 			System.out.println(student.getName());
 		}
 		
-//		courses = initiateCourseArrayFromLines(lines);
-//		System.out.println("Number of All Courses: " + numOfCourses);
-//		for(Course course: courses) {
-//			System.out.println(course.getCourseName());
-//		}
-//		
+		courses = initiateCourseArrayFromLines(lines);
+		System.out.println("Number of All Courses: " + numOfCourses);
+		for(Course course: courses) {
+			System.out.println(course.getCourseName());
+		}
+		
 	}
 
 	/**
@@ -67,11 +67,6 @@ public class HGUCoursePatternAnalyzer {
 		}
 
 		return student;
-	}
-
-	private Student Student(String trim) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/**
